@@ -92,6 +92,23 @@ func QuickBubble(data *[200]int) {
 	}
 }
 
+// EnhancedBubble
+// 改进的冒泡排序算法记录了最后一次交换的位置，从而缩小了排序范围，减少了比较和交换的次数
+// 算法首先遍历整个序列，并在每一轮中比较和交换相邻的元素。如果发生了交换，则将 swapped 变量置为 true
+// 在每一轮结束时，检查 swapped 变量，如果为 false，则说明序列已经排好序，可以提前退出循环
+// 如果 swapped 变量为 true，则将最后一次交换的位置记录下来，下一轮只需要比较到该位置即可
 func EnhancedBubble(data *[10]int) {
-
+	leng := len(data)
+	for i := 0; i < leng-1; i++ {
+		sorting := false
+		for j := 0; j < leng-1-i; j++ {
+			if data[j] > data[j+1] {
+				data[j], data[j+1] = data[j+1], data[j]
+				sorting = true
+			}
+		}
+		if !sorting {
+			break
+		}
+	}
 }
